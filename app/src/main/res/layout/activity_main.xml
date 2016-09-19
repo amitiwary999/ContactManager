@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/coordinatorLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:context=".MainActivity">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+        <EditText
+            android:id="@+id/search"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" >
+
+            <requestFocus />
+        </EditText>
+
+        <ListView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:id="@+id/listView"
+        android:layout_below="@id/search"
+        android:layout_marginBottom="6dp"
+        android:layout_gravity="center_horizontal" />
+    </RelativeLayout>
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="7dp"
+        android:src="@drawable/mainfab"
+        app:layout_behavior="com.example.amit.contactmanager.Scrollfab.Fabhide">
+
+    </android.support.design.widget.FloatingActionButton>
+    <include layout="@layout/fab_layout" />
+
+</android.support.design.widget.CoordinatorLayout>
