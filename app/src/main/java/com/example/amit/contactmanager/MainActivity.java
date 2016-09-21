@@ -251,7 +251,7 @@ public class MainActivity extends AppCompatActivity {
 
         if(isFabOpen){
 
-            fab.startAnimation(rotate_backward);
+           // fab.startAnimation(rotate_backward);
             fab1.startAnimation(fab_close);
             fab2.startAnimation(fab_close);
             fab3.startAnimation(fab_close);
@@ -263,7 +263,7 @@ public class MainActivity extends AppCompatActivity {
 
         } else {
 
-            fab.startAnimation(rotate_forward);
+          //  fab.startAnimation(rotate_forward);
             fab1.startAnimation(fab_open);
             fab2.startAnimation(fab_open);
             fab3.startAnimation(fab_open);

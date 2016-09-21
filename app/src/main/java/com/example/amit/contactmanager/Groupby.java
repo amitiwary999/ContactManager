@@ -82,7 +82,7 @@ public class Groupby extends AppCompatActivity {
                 }
                 break;
         }
-        finish();
+       // finish();
     }
 
     public void populateList(){
