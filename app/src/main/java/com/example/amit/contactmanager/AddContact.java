@@ -18,11 +18,13 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -34,7 +36,7 @@ import java.util.List;
 /**
  * Created by amit on 17/9/16.
  */
-public class AddContact extends AppCompatActivity {
+public class AddContact extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     EditText nameText, phoneText, emailText, addressText;
     Button addContactBtn;
     ImageView contactImageImgView;
@@ -44,6 +46,9 @@ public class AddContact extends AppCompatActivity {
     List<Contact> Contacts = new ArrayList<Contact>();
     MainActivity mana;
     ListView contactListView;
+    String item;
+    ContactListAdapter cl;
+    ArrayAdapter<Contact> adapter;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,15 +63,35 @@ public class AddContact extends AppCompatActivity {
         dbHandler = new DatabaseHandler(getApplicationContext());
         addContactBtn = (Button) findViewById(R.id.btnAddContact);
         //addContactBtn = (Button) findViewById(R.id.btnAddContact);
+        Spinner spinner = (Spinner) findViewById(R.id.spinner);
+
+        // Spinner click listener
+        spinner.setOnItemSelectedListener(this);
+
+        // Spinner Drop down elements
+        List<String> categories = new ArrayList<String>();
+        categories.add("Home");
+        categories.add("CoWorkers");
+        categories.add("Friends");
+
+        // Creating adapter for spinner
+        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, categories);
+
+        // Drop down layout style - list view with radio button
+        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        // attaching data adapter to spinner
+        spinner.setAdapter(dataAdapter);
 
         addContactBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Contact contact = new Contact(dbHandler.getContactsCount(), String.valueOf(nameText.getText()), String.valueOf(phoneText.getText()), String.valueOf(emailText.getText()), String.valueOf(addressText.getText()), imageUri);
+                Contact contact = new Contact(dbHandler.getContactsCount(), String.valueOf(nameText.getText()), String.valueOf(phoneText.getText()), String.valueOf(emailText.getText()), String.valueOf(addressText.getText()), item, imageUri);
                 dbHandler.createContact(contact);
                 Contacts.add(contact);
                 populateList();
                 Toast.makeText(getApplicationContext(), nameText.getText().toString() + " has been added to your contacts", Toast.LENGTH_SHORT).show();
+                finish();
             }
         });
 
@@ -100,7 +125,7 @@ public class AddContact extends AppCompatActivity {
     }
 
     protected void populateList(){
-        ArrayAdapter<Contact> adapter = new ContactListAdapter();
+        adapter = new ContactListAdapter();
         contactListView.setAdapter(adapter);
     }
     public void onActivityResult(int reqCode, int resCode, Intent data){
@@ -111,15 +136,15 @@ public class AddContact extends AppCompatActivity {
                         new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},12345);
                 return;
             }
-            mana.check=1;
-            System.out.print(mana.check);
-            Toast.makeText(AddContact.this,"m"+mana.check,Toast.LENGTH_LONG).show();
+           // mana.check=1;
+           // System.out.print(mana.check);
+           // Toast.makeText(AddContact.this,"m"+mana.check,Toast.LENGTH_LONG).show();
             imageUri = data.getData();
             String[] filePathColumn = { MediaStore.Images.Media.DATA };
             Cursor cursor = getContentResolver().query(imageUri,filePathColumn, null, null, null);
             cursor.moveToFirst();
-            int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
-            String picturePath = cursor.getString(columnIndex);
+           // int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
+            //String picturePath = cursor.getString(columnIndex);
             cursor.close();
             //contactImageImgView = (ImageView) findViewById(R.id.imgViewContactImage);
             //ImageView imageView = (ImageView) findViewById(R.id.imgView);
@@ -140,6 +165,16 @@ public class AddContact extends AppCompatActivity {
         Bitmap image = BitmapFactory.decodeFileDescriptor(fileDescriptor);
         parcelFileDescriptor.close();
         return image;
+    }
+
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        item = parent.getItemAtPosition(position).toString();
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
+
     }
 
 

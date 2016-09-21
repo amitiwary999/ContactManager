@@ -24,6 +24,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
             KEY_PHONE = "phone",
             KEY_EMAIL = "email",
             KEY_ADDRESS = "address",
+            KEY_GROP = "grop",
             KEY_IMAGEURI = "imageUri";
 
     public DatabaseHandler(Context context){
@@ -33,7 +34,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     @Override
 //    Write create table statements
     public void onCreate(SQLiteDatabase db){
-        db.execSQL("CREATE TABLE " + TABLE_CONTACTS + "(" + KEY_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," + KEY_NAME + " TEXT," + KEY_PHONE + " TEXT," + KEY_EMAIL + " TEXT," + KEY_ADDRESS + " TEXT," + KEY_IMAGEURI + " TEXT)");
+        db.execSQL("CREATE TABLE " + TABLE_CONTACTS + "(" + KEY_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," + KEY_NAME + " TEXT," + KEY_PHONE + " TEXT," + KEY_EMAIL + " TEXT," + KEY_ADDRESS + " TEXT," + KEY_GROP + " TEXT," +  KEY_IMAGEURI + " TEXT)");
     }
 
     @Override
@@ -60,6 +61,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         values.put(KEY_PHONE, contact.getPhone());
         values.put(KEY_EMAIL, contact.getEmail());
         values.put(KEY_ADDRESS, contact.getAddress());
+        values.put(KEY_GROP, contact.getGroup());
         values.put(KEY_IMAGEURI, contact.getImageURI().toString());
 
 //        Insert the row created above
@@ -68,17 +70,44 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         db.close();
 
     }
+   /* public String check(String name){
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor c = db.rawQuery("SELECT * FROM"+TABLE_CONTACTS+"WHERE name = '"+name+"'", null);
+        String column1=null,column2=null,column3=null,column4=null,column5=null,comp;
+        if(c.moveToFirst()){
+            do{
+                //assing values
+                 column1 = c.getString(0);
+                 column2 = c.getString(1);
+                 column3 = c.getString(2);
+                 column4=c.getString(3);
+                 column5=c.getString(4);
+                //Do something Here with values
+
+            }while(c.moveToNext());
+        }
+        StringBuilder builder = new StringBuilder();
+        builder.append(column1);
+        builder.append(","+column2);
+        builder.append(","+column3);
+        builder.append(","+column4);
+        builder.append(","+column5);
+        comp = builder.toString();
+        c.close();
+        db.close();
+        return comp;
+    }*/
 
     //       Read single contact row. It accepts id as parameter and will return matched row from the database
     public Contact getContact(int id){
         SQLiteDatabase db = getReadableDatabase();
 
-        Cursor cursor = db.query(TABLE_CONTACTS,new String[]{KEY_ID, KEY_NAME, KEY_PHONE, KEY_EMAIL, KEY_ADDRESS, KEY_IMAGEURI}, KEY_ID + "=?", new String[]{ String.valueOf(id) }, null, null,null, null);
+        Cursor cursor = db.query(TABLE_CONTACTS,new String[]{KEY_ID, KEY_NAME, KEY_PHONE, KEY_EMAIL, KEY_ADDRESS, KEY_GROP, KEY_IMAGEURI}, KEY_ID + "=?", new String[]{ String.valueOf(id) }, null, null,null, null);
 
         if (cursor != null)
             cursor.moveToFirst();
 
-        Contact contact = new Contact(Integer.parseInt(cursor.getString(0)), cursor.getString(1), cursor.getString(2), cursor.getString(3), cursor.getString(4), Uri.parse(cursor.getString(5)));
+        Contact contact = new Contact(Integer.parseInt(cursor.getString(0)), cursor.getString(1), cursor.getString(2), cursor.getString(3), cursor.getString(4), cursor.getString(5), Uri.parse(cursor.getString(6)));
         db.close();
         cursor.close();
 
@@ -107,6 +136,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         values.put(KEY_PHONE, contact.getPhone());
         values.put(KEY_EMAIL, contact.getEmail());
         values.put(KEY_ADDRESS, contact.getAddress());
+        values.put(KEY_GROP, contact.getGroup());
         values.put(KEY_IMAGEURI, contact.getImageURI().toString());
 
 //        update this row by id
@@ -122,18 +152,43 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         db.close();
     }
 
+ public List<Contact> getGContact(String grp){
+     List<Contact> contactsh = new ArrayList<Contact>();
+     SQLiteDatabase db = getWritableDatabase();
+     Cursor cursor=db.rawQuery("SELECT * FROM " + TABLE_CONTACTS + " WHERE " + KEY_GROP + " = ? ", new String []{grp});
+     if (cursor.moveToFirst()){
+         do {
+             Contact contacth = new Contact(Integer.parseInt(cursor.getString(0)), cursor.getString(1), cursor.getString(2), cursor.getString(3), cursor.getString(4), cursor.getString(5), Uri.parse(cursor.getString(6)));
+//                Add contact to list
+             contactsh.add(contacth);
+
+         }while (cursor.moveToNext());
+     }
+
+     return contactsh;
+
+ }
+    public int getGCount(String grp){
+        SQLiteDatabase db = getReadableDatabase();
+        Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE_CONTACTS + " WHERE " + KEY_GROP + " = ? " , new String[]{grp});
+        int count = cursor.getCount();
+        cursor.close();
+        db.close();
+
+        return count;
+    }
 
     //
     public List<Contact> getAllContacts(){
         List<Contact> contacts = new ArrayList<Contact>();
 //    Why get all contacts need a writable database?????
         SQLiteDatabase db = getWritableDatabase();
-        Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE_CONTACTS, null);
+        Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE_CONTACTS + " ORDER BY " + KEY_NAME + " ASC", null);
 
 //        Loop through all rows and adding to list
         if (cursor.moveToFirst()){
             do {
-                Contact contact = new Contact(Integer.parseInt(cursor.getString(0)), cursor.getString(1), cursor.getString(2), cursor.getString(3), cursor.getString(4), Uri.parse(cursor.getString(5)));
+                Contact contact = new Contact(Integer.parseInt(cursor.getString(0)), cursor.getString(1), cursor.getString(2), cursor.getString(3), cursor.getString(4), cursor.getString(5), Uri.parse(cursor.getString(6)));
 //                Add contact to list
                 contacts.add(contact);
 

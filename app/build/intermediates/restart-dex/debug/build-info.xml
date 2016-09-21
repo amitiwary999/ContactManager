@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<instant-run
+    abi="arm64-v8a,armeabi-v7a,armeabi"
+    api-level="21"
+    density="xhdpi"
+    format="7"
+    timestamp="11387672266161"
+    token="-6547337935622782791" >
+
+    <task
+        name="javac"
+        duration="422" />
+    <task
+        name="instant-run-dex"
+        duration="0" />
+    <task
+        name="instant-run-transform"
+        duration="105" />
+    <task
+        name="verifier"
+        duration="11" />
+
+    <artifact
+        location="/home/amit/ContactManager2/app/build/outputs/apk/app-debug.apk"
+        type="MAIN" />
+
+    <build timestamp="11387672266161" >
+        <artifact
+            location="/home/amit/ContactManager2/app/build/outputs/apk/app-debug.apk"
+            type="MAIN" />
+    </build>
+
+</instant-run>

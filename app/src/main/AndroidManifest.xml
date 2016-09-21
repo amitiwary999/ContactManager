@@ -18,6 +18,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".AddContact"></activity>
+        <activity android:name=".Groupby"></activity>
     </application>
 
 </manifest>

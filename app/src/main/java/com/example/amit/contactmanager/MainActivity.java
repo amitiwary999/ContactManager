@@ -1,6 +1,7 @@
 package com.example.amit.contactmanager;
 
 import android.app.ActionBar;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -14,6 +15,8 @@ import android.os.Bundle;
 import android.support.v7.widget.SearchView;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
@@ -35,18 +38,21 @@ import android.widget.Toast;
 import com.pkmmte.view.CircularImageView;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
 
-public class MainActivity extends AppCompatActivity implements  SearchView.OnQueryTextListener{
+public class MainActivity extends AppCompatActivity {
     FloatingActionButton fab;
     FloatingActionButton fab1;
     FloatingActionButton fab2;
     FloatingActionButton fab3;
+    FloatingActionButton faba;
     CoordinatorLayout rootLayout;
     SearchView mSearchView;
     private boolean FAB_Status = false;
-
+    protected Boolean isFabOpen = false;
+    private Animation fab_open,fab_close,rotate_forward,rotate_backward;
     //Animations
     Animation show_fab_1;
     Animation hide_fab_1;
@@ -61,6 +67,8 @@ public class MainActivity extends AppCompatActivity implements  SearchView.OnQue
     ListView contactListView;
     int check;
     Boolean flag;
+    String scheck;
+    String srchrslt;
     SearchView sv;
     ContactListAdapter cl;
     ArrayAdapter<Contact> adapter;
@@ -77,7 +85,7 @@ public class MainActivity extends AppCompatActivity implements  SearchView.OnQue
 
         setContentView(R.layout.activity_main);
 
-        nameText = (EditText) findViewById(R.id.search);
+      //  nameText = (EditText) findViewById(R.id.search);
        // phoneText = (EditText) findViewById(R.id.textPhone);
        // emailText = (EditText) findViewById(R.id.textEmail);
         //addressText = (EditText) findViewById(R.id.textAddress);
@@ -85,6 +93,10 @@ public class MainActivity extends AppCompatActivity implements  SearchView.OnQue
         //contactImageImgView = (ImageView) findViewById(R.id.imgViewContactImage);
         rootLayout=(CoordinatorLayout)findViewById(R.id.coordinatorLayout);
         dbHandler = new DatabaseHandler(getApplicationContext());
+        fab_open = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fab_open);
+        fab_close = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.fab_close);
+        rotate_forward = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.rotate_forward);
+        rotate_backward = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.rotate_backward);
          flag= Build.VERSION.SDK_INT>=Build.VERSION_CODES.KITKAT?true:false;
        // setStatusBarTranslucent(flag);
         android.support.v7.app.ActionBar actionBar=getSupportActionBar();
@@ -92,8 +104,10 @@ public class MainActivity extends AppCompatActivity implements  SearchView.OnQue
       //  actionBar.setStackedBackgroundDrawable(new ColorDrawable(Color.parseColor("#550000ff")));
        // sv=(SearchView) findViewById(R.id.searchView1);
         fab = (FloatingActionButton)findViewById(R.id.fab);
-        fab1 = (FloatingActionButton) findViewById(R.id.fab_1);
-        fab2 = (FloatingActionButton) findViewById(R.id.fab_2);
+        fab1 = (FloatingActionButton) findViewById(R.id.fab1);
+        fab2 = (FloatingActionButton) findViewById(R.id.fab2);
+        fab3=(FloatingActionButton) findViewById(R.id.fab3);
+       // faba=(FloatingActionButton)findViewById(R.id.faba);
         show_fab_1 = AnimationUtils.loadAnimation(this.getApplication(), R.anim.fab1_show);
         hide_fab_1 = AnimationUtils.loadAnimation(this.getApplication(), R.anim.fab1_hide);
         show_fab_2 = AnimationUtils.loadAnimation(this.getApplication(), R.anim.fab2_show);
@@ -102,10 +116,12 @@ public class MainActivity extends AppCompatActivity implements  SearchView.OnQue
 
              @Override
              public boolean onTouch(View view, MotionEvent motionEvent) {
-                 if (FAB_Status) {
+                 if(isFabOpen)
+                 animateFAB();
+                 /*if (FAB_Status) {
                      hideFAB();
                      FAB_Status = false;
-                 }
+                 }*/
                  return false;
              }
          });
@@ -113,8 +129,8 @@ public class MainActivity extends AppCompatActivity implements  SearchView.OnQue
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                if (FAB_Status == false) {
+                  animateFAB();
+              /*  if (FAB_Status == false) {
                     //Display FAB menu
                     expandFAB();
                     FAB_Status = true;
@@ -122,23 +138,42 @@ public class MainActivity extends AppCompatActivity implements  SearchView.OnQue
                     //Close FAB menu
                     hideFAB();
                     FAB_Status = false;
-                }
+                }*/
             }
         });
-
-        fab1.setOnClickListener(new View.OnClickListener() {
+        fab3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(MainActivity.this, "Floating Action Button 1", Toast.LENGTH_SHORT).show();
-                Intent i=new Intent(MainActivity.this,AddContact.class);
+                // Toast.makeText(MainActivity.this, "Floating Action Button 1", Toast.LENGTH_SHORT).show();
+                Intent i=new Intent(MainActivity.this,Groupby.class);
+                i.putExtra("grpid",2);
                 startActivity(i);
+               // animateFAB();
+               // Toast.makeText(MainActivity.this, "Floating Action Button 2", Toast.LENGTH_SHORT).show();
             }
         });
 
         fab2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(MainActivity.this, "Floating Action Button 2", Toast.LENGTH_SHORT).show();
+               // Toast.makeText(MainActivity.this, "Floating Action Button 1", Toast.LENGTH_SHORT).show();
+                Intent i=new Intent(MainActivity.this,Groupby.class);
+                i.putExtra("grpid",1);
+                startActivity(i);
+               // animateFAB();
+               // Toast.makeText(MainActivity.this, "Floating Action Button 2", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        fab1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent i=new Intent(MainActivity.this,Groupby.class);
+                i.putExtra("grpid",0);
+                startActivity(i);
+                //animateFAB();
+                //Toast.makeText(MainActivity.this, "Floating Action Button 2", Toast.LENGTH_SHORT).show();
             }
         });
        /* sv.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
@@ -166,11 +201,14 @@ public class MainActivity extends AppCompatActivity implements  SearchView.OnQue
                 Toast.makeText(getApplicationContext(), nameText.getText().toString() + " has been added to your contacts", Toast.LENGTH_SHORT).show();
             }
         });*/
-
-       nameText.addTextChangedListener(new TextWatcher() {
+//       scheck=nameText.getText().toString();
+//        srchrslt=dbHandler.check(scheck);
+      /* nameText.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence cs, int i, int i2, int i3) {
                // MainActivity.this.adapter.getFilter().filter(cs);
+                String text = nameText.getText().toString().toLowerCase(Locale.getDefault());
+                cl.filter(text);
             }
 
             @Override
@@ -180,11 +218,11 @@ public class MainActivity extends AppCompatActivity implements  SearchView.OnQue
 
             @Override
             public void afterTextChanged(Editable editable) {
-                String text = nameText.getText().toString().toLowerCase(Locale.getDefault());
-                cl.filter(text);
+              //  String text = nameText.getText().toString().toLowerCase(Locale.getDefault());
+              //  cl.filter(text);
 
             }
-        });
+        });*/
 
        /* contactImageImgView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -209,6 +247,37 @@ public class MainActivity extends AppCompatActivity implements  SearchView.OnQue
             populateList();
         }
     }
+    public void animateFAB(){
+
+        if(isFabOpen){
+
+            fab.startAnimation(rotate_backward);
+            fab1.startAnimation(fab_close);
+            fab2.startAnimation(fab_close);
+            fab3.startAnimation(fab_close);
+            fab1.setClickable(false);
+            fab2.setClickable(false);
+            fab3.setClickable(false);
+            isFabOpen = false;
+           // Log.d("Raj", "close");
+
+        } else {
+
+            fab.startAnimation(rotate_forward);
+            fab1.startAnimation(fab_open);
+            fab2.startAnimation(fab_open);
+            fab3.startAnimation(fab_open);
+            fab1.setClickable(true);
+            fab2.setClickable(true);
+            fab3.setClickable(true);
+            isFabOpen = true;
+           // Log.d("Raj","open");
+
+        }
+    }
+    private void sort(){
+
+    }
 
 
     protected void setStatusBarTranslucent(boolean makeTranslucent) {
@@ -219,11 +288,11 @@ public class MainActivity extends AppCompatActivity implements  SearchView.OnQue
         }
     }
     protected void populateList(){
-        // adapter = new ContactListAdapter(arrayList);
-        cl=new ContactListAdapter(arrayList);
-       // contactListView.setAdapter(adapter);
-        contactListView.setAdapter(cl);
-        nameText.addTextChangedListener(new TextWatcher() {
+         adapter = new ContactListAdapter();
+       // cl=new ContactListAdapter(MainActivity.this,arrayList);
+        contactListView.setAdapter(adapter);
+      //  contactListView.setAdapter(cl);
+       /* nameText.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence cs, int i, int i2, int i3) {
                 // MainActivity.this.adapter.getFilter().filter(cs);
@@ -240,18 +309,32 @@ public class MainActivity extends AppCompatActivity implements  SearchView.OnQue
                 cl.filter(text);
 
             }
-        });
+        });*/
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu, menu);
 
-       // MenuItem searchItem = menu.findItem(R.id.search);
-        mSearchView = (SearchView) menu.findItem(R.id.search).getActionView();
-        setupSearchView();
+       // MenuItem searchItem = menu.findItem(R.id.add);
+
         return super.onCreateOptionsMenu(menu);
     }
-    private void setupSearchView() {
+
+     @Override
+    public boolean onOptionsItemSelected(MenuItem item)
+    {
+       switch (item.getItemId())
+        {
+         case R.id.add:
+         Intent i=new Intent(MainActivity.this,AddContact.class);
+         startActivity(i);
+         return true;
+         default:
+            return super.onOptionsItemSelected(item);
+         }
+    }
+
+  /*  private void setupSearchView() {
         mSearchView.setIconifiedByDefault(true);
         mSearchView.setOnQueryTextListener(this);
         mSearchView.setQueryHint("Search Here");
@@ -266,7 +349,7 @@ public class MainActivity extends AppCompatActivity implements  SearchView.OnQue
     public boolean onQueryTextChange(String newText) {
         return false;
 
-    }
+    }*/
 
 
 //    private void addContact(String name, String phone, String email, String address){
@@ -275,16 +358,20 @@ public class MainActivity extends AppCompatActivity implements  SearchView.OnQue
 
 
     private class ContactListAdapter extends ArrayAdapter<Contact> {
+        Context mContext;
+        LayoutInflater inflater;
       private   List<Contact> contact=null;
         private ArrayList<Contact> arrayList;
-        public ContactListAdapter(List<Contact> contact){
+        public ContactListAdapter(){
 
             super(MainActivity.this, R.layout.listview_item, Contacts);
-            this.contact=contact;
-            this.arrayList=new ArrayList<Contact>();
-            this.arrayList.addAll(contact);
+            //mContext=context;
+            //inflater = LayoutInflater.from(mContext);
+            //this.contact=contact;
+            //this.arrayList=new ArrayList<Contact>();
+           // this.arrayList.addAll(contact);
         }
-        public void filter(String charText) {
+       /* public void filter(String charText) {
             charText = charText.toLowerCase(Locale.getDefault());
             contact.clear();
             if (charText.length() == 0) {
@@ -298,7 +385,7 @@ public class MainActivity extends AppCompatActivity implements  SearchView.OnQue
                 }
             }
             notifyDataSetChanged();
-        }
+        }*/
 
         @Override
         public View getView(int position, View view, ViewGroup parent){
@@ -319,6 +406,8 @@ public class MainActivity extends AppCompatActivity implements  SearchView.OnQue
 
             TextView address = (TextView) view.findViewById(R.id.textContactAddress);
             address.setText(currentContact.getAddress());
+            TextView group=(TextView) view.findViewById(R.id.textContactGroup);
+            group.setText(currentContact.getGroup());
 
             CircularImageView ivContactImage = (CircularImageView) view.findViewById(R.id.ivContactImage);
             ivContactImage.setBorderWidth(1);
