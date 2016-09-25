@@ -1,0 +1,6 @@
+[
+    {
+        "merged": "/home/amit/ContactManager2/app/build/intermediates/res/merged/debug/drawable-xhdpi-v11/leak_canary_notification.png",
+        "source": "/home/amit/ContactManager2/app/build/intermediates/exploded-aar/com.squareup.leakcanary/leakcanary-android/1.4/res/drawable-xhdpi-v11/leak_canary_notification.png"
+    }
+]

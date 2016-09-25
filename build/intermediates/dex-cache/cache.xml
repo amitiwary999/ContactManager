@@ -2,6 +2,13 @@
 <items version="2" >
 
     <item
+        jar="/home/amit/.gradle/caches/modules-2/files-2.1/com.squareup.haha/haha/2.0.3/640a438d2d415c056ca6a673ac26b183b044e160/haha-2.0.3.jar"
+        jumboMode="true"
+        revision="24.0.2"
+        sha1="640a438d2d415c056ca6a673ac26b183b044e160">
+        <dex dex="/home/amit/ContactManager2/app/build/intermediates/transforms/dex/debug/folders/1000/10/haha-2.0.3_5bc707710bef3aa0fe08316538e8f074a6a683a9/classes.dex" />
+    </item>
+    <item
         jar="/home/amit/ContactManager2/app/build/intermediates/exploded-aar/com.android.support/support-media-compat/24.2.1/jars/libs/internal_impl-24.2.1.jar"
         jumboMode="true"
         revision="24.0.2"
@@ -68,7 +75,7 @@
         jar="/home/amit/ContactManager2/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
         jumboMode="true"
         revision="24.0.2"
-        sha1="76c79965172b99fb6a068275946147d8923218a8">
+        sha1="ff62f8dfc257d16a221b96e6b950d38dba52025a">
         <dex dex="/home/amit/ContactManager2/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run_33b4a490621062598d6ff1788c83956c7575e958/classes.dex" />
     </item>
     <item
@@ -107,10 +114,17 @@
         <dex dex="/home/amit/ContactManager2/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-appcompat-v7-24.2.1_d5460b95597547b88c378149aafacee7bb3dc897/classes.dex" />
     </item>
     <item
+        jar="/home/amit/ContactManager2/app/build/intermediates/exploded-aar/com.squareup.leakcanary/leakcanary-android/1.4/jars/classes.jar"
+        jumboMode="true"
+        revision="24.0.2"
+        sha1="d5e583b1683726f97ea955f0ca8dca78ac761ec5">
+        <dex dex="/home/amit/ContactManager2/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.squareup.leakcanary-leakcanary-android-1.4_bf943b8de225af7f48d4bce5a0602ed788b28013/classes.dex" />
+    </item>
+    <item
         jar="/home/amit/ContactManager2/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
         jumboMode="true"
         revision="24.0.2"
-        sha1="6f577048c93f54bb897eb9c724b92924240b0623">
+        sha1="305219c83de372e2135fb99efc33796e7c23d023">
         <dex dex="/home/amit/ContactManager2/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_50c93de94e1aca1815d7999e414160a0bdb468bf/classes.dex" />
     </item>
     <item
@@ -140,6 +154,20 @@
         revision="24.0.2"
         sha1="9c4c3bc902450c39ed54de170db4fb12aea20a35">
         <dex dex="/home/amit/ContactManager2/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-core-utils-24.2.1_76081f3ff57669f33389abdc9ab87bcf8001924a/classes.dex" />
+    </item>
+    <item
+        jar="/home/amit/.gradle/caches/modules-2/files-2.1/com.squareup.leakcanary/leakcanary-watcher/1.4/5afc3a836f7523c7dec8ea0da5632a19b354b0a0/leakcanary-watcher-1.4.jar"
+        jumboMode="true"
+        revision="24.0.2"
+        sha1="5afc3a836f7523c7dec8ea0da5632a19b354b0a0">
+        <dex dex="/home/amit/ContactManager2/app/build/intermediates/transforms/dex/debug/folders/1000/10/leakcanary-watcher-1.4_9d989edb53a01a7ce189835f33b810f85b51428e/classes.dex" />
+    </item>
+    <item
+        jar="/home/amit/.gradle/caches/modules-2/files-2.1/com.squareup.leakcanary/leakcanary-analyzer/1.4/5faf46d7b5f99d8bdc887ba83c7a966b426740e1/leakcanary-analyzer-1.4.jar"
+        jumboMode="true"
+        revision="24.0.2"
+        sha1="5faf46d7b5f99d8bdc887ba83c7a966b426740e1">
+        <dex dex="/home/amit/ContactManager2/app/build/intermediates/transforms/dex/debug/folders/1000/10/leakcanary-analyzer-1.4_1688e02382cc81c0761263603126168b5d80cbe7/classes.dex" />
     </item>
 
 </items>

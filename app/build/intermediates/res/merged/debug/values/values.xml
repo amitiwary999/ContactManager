@@ -275,6 +275,8 @@
     <integer name="bottom_sheet_slide_duration">150</integer>
     <integer name="cancel_button_image_alpha">127</integer>
     <integer name="design_snackbar_text_max_lines">2</integer>
+    <integer name="leak_canary_max_stored_leaks">7</integer>
+    <integer name="leak_canary_watch_delay_millis">5000</integer>
     <integer name="status_bar_notification_info_maxnum">999</integer>
     <string name="abc_action_bar_home_description">Navigate home</string>
     <string name="abc_action_bar_home_description_format">%1$s, %2$s</string>
@@ -312,6 +314,28 @@
     <string name="bottom_sheet_behavior" translatable="false">android.support.design.widget.BottomSheetBehavior</string>
     <string name="character_counter_pattern" translatable="false">%1$d / %2$d</string>
     <string name="hint_search">Search</string>
+    <string name="leak_canary_analysis_failed">Leak analysis failed</string>
+    <string name="leak_canary_class_has_leaked">%1$s leaked %2$s</string>
+    <string name="leak_canary_could_not_save_text">LeakCanary was unable to save the analysis result.</string>
+    <string name="leak_canary_could_not_save_title">Could not save result.</string>
+    <string name="leak_canary_delete">Delete</string>
+    <string name="leak_canary_delete_all">Delete all</string>
+    <string name="leak_canary_display_activity_label">Leaks</string>
+    <string name="leak_canary_excluded_row">[Excluded] %s</string>
+    <string name="leak_canary_failure_report">"Please report this failure to http://github.com/square/leakcanary\n"</string>
+    <string name="leak_canary_leak_excluded">[Excluded] %1$s leaked %2$s</string>
+    <string name="leak_canary_leak_list_title">Leaks in %s</string>
+    <string name="leak_canary_no_leak_text">The GC was being lazy.</string>
+    <string name="leak_canary_no_leak_title">No leak found</string>
+    <string name="leak_canary_notification_message">Click for more details</string>
+    <string name="leak_canary_permission_not_granted">Please grant external storage permission, otherwise memory leaks will not be detected.</string>
+    <string name="leak_canary_permission_notification_text">Click to enable storage permission for %s.</string>
+    <string name="leak_canary_permission_notification_title">Leak detected, need permission</string>
+    <string name="leak_canary_share_heap_dump">Share heap dump</string>
+    <string name="leak_canary_share_leak">Share info</string>
+    <string name="leak_canary_share_with">Share with…</string>
+    <string name="leak_canary_storage_permission_activity_label">Storage permission</string>
+    <string name="leak_canary_toast_heap_dump">Dumping memory, app will freeze. Brrrr.</string>
     <string name="search_menu_title">Search</string>
     <string name="spinner_title">Select Category</string>
     <string name="status_bar_notification_info_overflow">999+</string>
@@ -1797,4 +1821,13 @@
         <item name="passwordToggleDrawable">@drawable/design_ic_visibility</item>
         <item name="passwordToggleTint">@color/design_tint_password_toggle</item>
     </style>
+    <style name="leak_canary_LeakCanary.Base" parent="android:Theme">
+  </style>
+    <style name="leak_canary_Theme.Transparent" parent="android:Theme">
+    <item name="android:windowIsTranslucent">true</item>
+    <item name="android:windowBackground">@android:color/transparent</item>
+    <item name="android:windowContentOverlay">@null</item>
+    <item name="android:windowNoTitle">true</item>
+    <item name="android:backgroundDimEnabled">false</item>
+  </style>
 </resources>

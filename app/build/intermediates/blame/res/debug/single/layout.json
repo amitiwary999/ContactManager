@@ -8,6 +8,10 @@
         "source": "/home/amit/ContactManager2/app/build/intermediates/exploded-aar/com.android.support/design/24.2.1/res/layout/design_bottom_sheet_dialog.xml"
     },
     {
+        "merged": "/home/amit/ContactManager2/app/build/intermediates/res/merged/debug/layout/leak_canary_leak_row.xml",
+        "source": "/home/amit/ContactManager2/app/build/intermediates/exploded-aar/com.squareup.leakcanary/leakcanary-android/1.4/res/layout/leak_canary_leak_row.xml"
+    },
+    {
         "merged": "/home/amit/ContactManager2/app/build/intermediates/res/merged/debug/layout/abc_action_bar_view_list_nav_layout.xml",
         "source": "/home/amit/ContactManager2/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/layout/abc_action_bar_view_list_nav_layout.xml"
     },
@@ -32,6 +36,10 @@
         "source": "/home/amit/ContactManager2/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/layout/notification_template_big_media_narrow.xml"
     },
     {
+        "merged": "/home/amit/ContactManager2/app/build/intermediates/res/merged/debug/layout/leak_canary_display_leak.xml",
+        "source": "/home/amit/ContactManager2/app/build/intermediates/exploded-aar/com.squareup.leakcanary/leakcanary-android/1.4/res/layout/leak_canary_display_leak.xml"
+    },
+    {
         "merged": "/home/amit/ContactManager2/app/build/intermediates/res/merged/debug/layout/design_layout_tab_icon.xml",
         "source": "/home/amit/ContactManager2/app/build/intermediates/exploded-aar/com.android.support/design/24.2.1/res/layout/design_layout_tab_icon.xml"
     },
@@ -42,6 +50,14 @@
     {
         "merged": "/home/amit/ContactManager2/app/build/intermediates/res/merged/debug/layout/abc_activity_chooser_view_list_item.xml",
         "source": "/home/amit/ContactManager2/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/layout/abc_activity_chooser_view_list_item.xml"
+    },
+    {
+        "merged": "/home/amit/ContactManager2/app/build/intermediates/res/merged/debug/layout/leak_canary_ref_top_row.xml",
+        "source": "/home/amit/ContactManager2/app/build/intermediates/exploded-aar/com.squareup.leakcanary/leakcanary-android/1.4/res/layout/leak_canary_ref_top_row.xml"
+    },
+    {
+        "merged": "/home/amit/ContactManager2/app/build/intermediates/res/merged/debug/layout/leak_canary_ref_row.xml",
+        "source": "/home/amit/ContactManager2/app/build/intermediates/exploded-aar/com.squareup.leakcanary/leakcanary-android/1.4/res/layout/leak_canary_ref_row.xml"
     },
     {
         "merged": "/home/amit/ContactManager2/app/build/intermediates/res/merged/debug/layout/abc_dialog_title_material.xml",
@@ -174,6 +190,10 @@
     {
         "merged": "/home/amit/ContactManager2/app/build/intermediates/res/merged/debug/layout/design_layout_snackbar.xml",
         "source": "/home/amit/ContactManager2/app/build/intermediates/exploded-aar/com.android.support/design/24.2.1/res/layout/design_layout_snackbar.xml"
+    },
+    {
+        "merged": "/home/amit/ContactManager2/app/build/intermediates/res/merged/debug/layout/leak_canary_heap_dump_toast.xml",
+        "source": "/home/amit/ContactManager2/app/build/intermediates/exploded-aar/com.squareup.leakcanary/leakcanary-android/1.4/res/layout/leak_canary_heap_dump_toast.xml"
     },
     {
         "merged": "/home/amit/ContactManager2/app/build/intermediates/res/merged/debug/layout/select_dialog_item_material.xml",

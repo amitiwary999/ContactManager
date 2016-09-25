@@ -1759,6 +1759,27 @@
                         "endOffset": 244
                     }
                 }
+            },
+            {
+                "to": {
+                    "startLine": 256,
+                    "startColumn": 4,
+                    "startOffset": 18644,
+                    "endLine": 257,
+                    "endColumn": 10,
+                    "endOffset": 18729
+                },
+                "from": {
+                    "file": "/home/amit/ContactManager2/app/build/intermediates/exploded-aar/com.squareup.leakcanary/leakcanary-android/1.4/res/values-v21/values-v21.xml",
+                    "position": {
+                        "startLine": 2,
+                        "startColumn": 4,
+                        "startOffset": 55,
+                        "endLine": 3,
+                        "endColumn": 10,
+                        "endOffset": 140
+                    }
+                }
             }
         ]
     }

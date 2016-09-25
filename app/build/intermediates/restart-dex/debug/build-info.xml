@@ -4,27 +4,27 @@
     api-level="21"
     density="xhdpi"
     format="7"
-    timestamp="11387672266161"
+    timestamp="17917193626549"
     token="-6547337935622782791" >
 
     <task
         name="javac"
-        duration="422" />
+        duration="3309" />
     <task
         name="instant-run-dex"
         duration="0" />
     <task
         name="instant-run-transform"
-        duration="105" />
+        duration="545" />
     <task
         name="verifier"
-        duration="11" />
+        duration="12" />
 
     <artifact
         location="/home/amit/ContactManager2/app/build/outputs/apk/app-debug.apk"
         type="MAIN" />
 
-    <build timestamp="11387672266161" >
+    <build timestamp="17917193626549" >
         <artifact
             location="/home/amit/ContactManager2/app/build/outputs/apk/app-debug.apk"
             type="MAIN" />

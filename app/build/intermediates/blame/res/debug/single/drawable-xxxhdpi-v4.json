@@ -4,6 +4,10 @@
         "source": "/home/amit/ContactManager2/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/drawable-xxxhdpi-v4/abc_ic_menu_selectall_mtrl_alpha.png"
     },
     {
+        "merged": "/home/amit/ContactManager2/app/build/intermediates/res/merged/debug/drawable-xxxhdpi-v4/leak_canary_icon.png",
+        "source": "/home/amit/ContactManager2/app/build/intermediates/exploded-aar/com.squareup.leakcanary/leakcanary-android/1.4/res/drawable-xxxhdpi-v4/leak_canary_icon.png"
+    },
+    {
         "merged": "/home/amit/ContactManager2/app/build/intermediates/res/merged/debug/drawable-xxxhdpi-v4/abc_scrubber_control_to_pressed_mtrl_005.png",
         "source": "/home/amit/ContactManager2/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/drawable-xxxhdpi-v4/abc_scrubber_control_to_pressed_mtrl_005.png"
     },
