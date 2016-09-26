@@ -6,7 +6,7 @@ android {
 
     defaultConfig {
         applicationId "com.example.amit.contactmanager"
-        minSdkVersion 17
+        minSdkVersion 19
         targetSdkVersion 24
         versionCode 1
         versionName "1.0"
@@ -26,6 +26,7 @@ dependencies {
     compile 'com.pkmmte.view:circularimageview:1.1'
     compile 'com.android.support:design:24.2.1'
     compile "com.android.support:support-v4:24.2.1"
+    compile 'com.readystatesoftware.systembartint:systembartint:1.0.3'
     debugCompile 'com.squareup.leakcanary:leakcanary-android:1.4'
     releaseCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.4'
     testCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.4'

@@ -13,6 +13,7 @@ import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.SearchView;
+import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -36,6 +37,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.pkmmte.view.CircularImageView;
+import com.readystatesoftware.systembartint.SystemBarTintManager;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -80,18 +82,18 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-       // getWindow().requestFeature(Window.FEATURE_ACTION_BAR_OVERLAY);
-
-
         setContentView(R.layout.activity_main);
-
-      //  nameText = (EditText) findViewById(R.id.search);
-       // phoneText = (EditText) findViewById(R.id.textPhone);
-       // emailText = (EditText) findViewById(R.id.textEmail);
-        //addressText = (EditText) findViewById(R.id.textAddress);
+        Toolbar toolbar=(Toolbar)findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+       // toolbar.setPadding(0,getStatusBarHeight(),0,0);
         contactListView = (ListView) findViewById(R.id.listView);
         //contactImageImgView = (ImageView) findViewById(R.id.imgViewContactImage);
         rootLayout=(CoordinatorLayout)findViewById(R.id.coordinatorLayout);
+        /* SystemBarTintManager tintManager = new SystemBarTintManager(this);
+        // enable status bar tint
+        tintManager.setStatusBarTintEnabled(true);
+        // enable navigation bar tint
+        tintManager.setNavigationBarTintEnabled(true);*/
         dbHandler = new DatabaseHandler(getApplicationContext());
         fab_open = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fab_open);
         fab_close = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.fab_close);
@@ -280,12 +282,21 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    protected void setStatusBarTranslucent(boolean makeTranslucent) {
+    /*protected void setStatusBarTranslucent(boolean makeTranslucent) {
         if (makeTranslucent) {
             getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
         } else {
             getWindow().clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
         }
+    }*/
+
+    public int getStatusBarHeight(){
+        int result=0;
+        int resourceId=getResources().getIdentifier("status_bar_height","dimen","android");
+        if(resourceId>0){
+            result=getResources().getDimensionPixelSize(resourceId);
+        }
+        return result;
     }
     protected void populateList(){
          adapter = new ContactListAdapter();

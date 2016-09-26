@@ -2,9 +2,11 @@ package com.example.amit.contactmanager;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +17,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.pkmmte.view.CircularImageView;
+import com.readystatesoftware.systembartint.SystemBarTintManager;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,6 +38,14 @@ public class Groupby extends AppCompatActivity {
         Intent mIntent = getIntent();
         i=mIntent.getIntExtra("grpid",0);
         lv=(ListView)findViewById(R.id.listView);
+        Toolbar toolbar=(Toolbar)findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        SystemBarTintManager tintManager = new SystemBarTintManager(this);
+        // enable status bar tint
+        tintManager.setStatusBarTintEnabled(true);
+        // enable navigation bar tint
+        tintManager.setNavigationBarTintEnabled(true);
+        tintManager.setTintColor(Color.parseColor("#ffffff"));
         dbHandler = new DatabaseHandler(getApplicationContext());
 
         selecygrp();

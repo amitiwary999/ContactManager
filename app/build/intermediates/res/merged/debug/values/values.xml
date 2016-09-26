@@ -30,7 +30,7 @@
     <color name="colorAccent">#FF4081</color>
     <color name="colorFAB1">#2196F3</color>
     <color name="colorFAB2">#E040FB</color>
-    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimary">#ffffff</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="design_fab_shadow_end_color">@android:color/transparent</color>
     <color name="design_fab_shadow_mid_color">#14000000</color>
@@ -350,15 +350,13 @@
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorPrimaryDark">@android:color/transparent</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:windowTranslucentStatus">true</item>
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+
     </style>
-    <style name="AppTheme.ActionBar.Transparent" parent="AppTheme">
-        <item name="android:windowContentOverlay">@null</item>
-        <item name="windowActionBarOverlay">true</item>
-        <item name="colorPrimary">@android:color/transparent</item>
-    </style>
-    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light"/>
     <style name="Base.AlertDialog.AppCompat" parent="android:Widget">
         <item name="android:layout">@layout/abc_alert_dialog_material</item>
@@ -1370,9 +1368,6 @@
         <item name="tabBackground">?attr/selectableItemBackground</item>
         <item name="tabTextAppearance">@style/TextAppearance.Design.Tab</item>
         <item name="tabSelectedTextColor">?android:textColorPrimary</item>
-    </style>
-    <style name="CustomActionBarTheme" parent="@android:style/Theme.Holo">
-        <item name="android:windowActionBarOverlay">true</item>
     </style>
     <style name="Platform.AppCompat" parent="android:Theme">
         <item name="android:windowNoTitle">true</item>
