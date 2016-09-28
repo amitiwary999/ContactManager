@@ -12,17 +12,26 @@
         android:layout_height="match_parent"
         android:fitsSystemWindows="true"
         >
+        <FrameLayout
+            android:id="@+id/toolbar_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             app:popupTheme="@style/AppTheme.PopupOverlay"
             android:background="@android:color/transparent" />
+        <com.miguelcatalan.materialsearchview.MaterialSearchView
+            android:id="@+id/search_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        </FrameLayout>
         <ListView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="6dp"
-            android:layout_below="@id/toolbar"
+            android:layout_below="@id/toolbar_container"
         android:id="@+id/listView"
         android:layout_marginBottom="6dp"
         android:layout_gravity="center_horizontal" />

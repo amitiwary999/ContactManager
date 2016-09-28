@@ -1,6 +1,7 @@
 package com.example.amit.contactmanager;
 
 import android.app.ActionBar;
+import android.content.ClipData;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
@@ -36,8 +37,13 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.miguelcatalan.materialsearchview.MaterialSearchView;
 import com.pkmmte.view.CircularImageView;
 import com.readystatesoftware.systembartint.SystemBarTintManager;
+
+import net.rehacktive.waspdb.WaspDb;
+import net.rehacktive.waspdb.WaspFactory;
+import net.rehacktive.waspdb.WaspHash;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -56,6 +62,7 @@ public class MainActivity extends AppCompatActivity {
     protected Boolean isFabOpen = false;
     private Animation fab_open,fab_close,rotate_forward,rotate_backward;
     //Animations
+    MaterialSearchView searchView;
     Animation show_fab_1;
     Animation hide_fab_1;
     Animation show_fab_2;
@@ -67,6 +74,7 @@ public class MainActivity extends AppCompatActivity {
     List<Contact> Contacts = new ArrayList<Contact>();
     ArrayList<Contact> arrayList=new ArrayList<Contact>();
     ListView contactListView;
+    ContactListAdapter cla;
     int check;
     Boolean flag;
     String scheck;
@@ -89,6 +97,7 @@ public class MainActivity extends AppCompatActivity {
         contactListView = (ListView) findViewById(R.id.listView);
         //contactImageImgView = (ImageView) findViewById(R.id.imgViewContactImage);
         rootLayout=(CoordinatorLayout)findViewById(R.id.coordinatorLayout);
+        addDataToList(Contacts,null);
         /* SystemBarTintManager tintManager = new SystemBarTintManager(this);
         // enable status bar tint
         tintManager.setStatusBarTintEnabled(true);
@@ -114,6 +123,9 @@ public class MainActivity extends AppCompatActivity {
         hide_fab_1 = AnimationUtils.loadAnimation(this.getApplication(), R.anim.fab1_hide);
         show_fab_2 = AnimationUtils.loadAnimation(this.getApplication(), R.anim.fab2_show);
         hide_fab_2 = AnimationUtils.loadAnimation(this.getApplication(), R.anim.fab2_hide);
+        searchView = (MaterialSearchView) findViewById(R.id.search_view);
+        searchView.setVoiceSearch(false);
+
          contactListView.setOnTouchListener(new View.OnTouchListener(){
 
              @Override
@@ -299,9 +311,48 @@ public class MainActivity extends AppCompatActivity {
         return result;
     }
     protected void populateList(){
-         adapter = new ContactListAdapter();
+       //  adapter = new ContactListAdapter();
+        cla=new ContactListAdapter();
        // cl=new ContactListAdapter(MainActivity.this,arrayList);
-        contactListView.setAdapter(adapter);
+       // contactListView.setAdapter(adapter);
+        contactListView.setAdapter(cla);
+        searchView.setVoiceSearch(false);
+        searchView.setOnQueryTextListener(new MaterialSearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                Log.d("query",query);
+                cla.clearAll();
+                Contacts.clear();
+
+                addDataToList(Contacts,query);
+
+                return true;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String query)
+            {
+                Log.d("query",query);
+                cla.clearAll();
+                Contacts.clear();
+
+                addDataToList(Contacts,query);
+                return true;
+            }
+        });
+
+        searchView.setOnSearchViewListener(new MaterialSearchView.SearchViewListener() {
+            @Override
+            public void onSearchViewShown() {
+
+            }
+
+            @Override
+            public void onSearchViewClosed() {
+                cla.clearAll();
+                addDataToList(Contacts,null);
+            }
+        });
       //  contactListView.setAdapter(cl);
        /* nameText.addTextChangedListener(new TextWatcher() {
             @Override
@@ -371,7 +422,7 @@ public class MainActivity extends AppCompatActivity {
     private class ContactListAdapter extends ArrayAdapter<Contact> {
         Context mContext;
         LayoutInflater inflater;
-      private   List<Contact> contact=null;
+      private   List<Contact> data=null;
         private ArrayList<Contact> arrayList;
         public ContactListAdapter(){
 
@@ -381,6 +432,11 @@ public class MainActivity extends AppCompatActivity {
             //this.contact=contact;
             //this.arrayList=new ArrayList<Contact>();
            // this.arrayList.addAll(contact);
+        }
+
+        public void clearAll(){
+            data.clear();
+            notifyDataSetChanged();
         }
        /* public void filter(String charText) {
             charText = charText.toLowerCase(Locale.getDefault());
@@ -434,6 +490,38 @@ public class MainActivity extends AppCompatActivity {
             return view;
         }
     }
+    public void addDataToList(List<Contact> data, String query){
+        String path = getFilesDir().getPath();
+        String databaseName = "myDb";
+        String password = "passw0rd";
+
+        WaspDb db = WaspFactory.openOrCreateDatabase(path,databaseName,password);
+        WaspHash itemsHash = db.openOrCreateHash("items");
+
+        if(query == null) {
+            List<Contact> ld = itemsHash.getAllValues();
+            if (ld == null) {
+                Log.d("ld", "is null");
+            }
+            data.addAll(ld);
+        }
+        else {
+            List<Contact> ld = itemsHash.getAllValues();
+            for(Contact item:ld ){
+                if(item.getName().toLowerCase().contains(query.toLowerCase())){
+                    data.add(item);
+                }
+                else if(item.getEmail().toLowerCase().contains(query.toLowerCase())){
+                    data.add(item);
+                }
+                else if(item.getGroup().toLowerCase().contains(query.toLowerCase())){
+                            data.add(item);
+                            break;
+                        }
+                    }
+                }
+            }
+
 
     private void expandFAB() {
 

@@ -1643,9 +1643,30 @@
                     "startLine": 221,
                     "startColumn": 4,
                     "startOffset": 16617,
-                    "endLine": 230,
+                    "endLine": 227,
                     "endColumn": 12,
-                    "endOffset": 17125
+                    "endOffset": 17032
+                },
+                "from": {
+                    "file": "/home/amit/ContactManager2/app/build/intermediates/exploded-aar/com.miguelcatalan/materialsearchview/1.4.0/res/values-v21/values-v21.xml",
+                    "position": {
+                        "startLine": 4,
+                        "startColumn": 4,
+                        "startOffset": 199,
+                        "endLine": 10,
+                        "endColumn": 12,
+                        "endOffset": 614
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 228,
+                    "startColumn": 4,
+                    "startOffset": 17037,
+                    "endLine": 237,
+                    "endColumn": 12,
+                    "endOffset": 17545
                 },
                 "from": {
                     "file": "/home/amit/ContactManager2/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values-v21/values-v21.xml",
@@ -1661,12 +1682,12 @@
             },
             {
                 "to": {
-                    "startLine": 231,
+                    "startLine": 238,
                     "startColumn": 4,
-                    "startOffset": 17130,
-                    "endLine": 240,
+                    "startOffset": 17550,
+                    "endLine": 247,
                     "endColumn": 12,
-                    "endOffset": 17650
+                    "endOffset": 18070
                 },
                 "from": {
                     "file": "/home/amit/ContactManager2/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values-v21/values-v21.xml",
@@ -1682,12 +1703,12 @@
             },
             {
                 "to": {
-                    "startLine": 241,
+                    "startLine": 248,
                     "startColumn": 4,
-                    "startOffset": 17655,
-                    "endLine": 250,
+                    "startOffset": 18075,
+                    "endLine": 257,
                     "endColumn": 12,
-                    "endOffset": 18330
+                    "endOffset": 18750
                 },
                 "from": {
                     "file": "/home/amit/ContactManager2/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values-v21/values-v21.xml",
@@ -1703,11 +1724,11 @@
             },
             {
                 "to": {
-                    "startLine": 251,
+                    "startLine": 258,
                     "startColumn": 4,
-                    "startOffset": 18335,
+                    "startOffset": 18755,
                     "endColumn": 56,
-                    "endOffset": 18387
+                    "endOffset": 18807
                 },
                 "from": {
                     "file": "/home/amit/ContactManager2/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values-v21/values-v21.xml",
@@ -1722,11 +1743,11 @@
             },
             {
                 "to": {
-                    "startLine": 252,
+                    "startLine": 259,
                     "startColumn": 4,
-                    "startOffset": 18392,
+                    "startOffset": 18812,
                     "endColumn": 57,
-                    "endOffset": 18445
+                    "endOffset": 18865
                 },
                 "from": {
                     "file": "/home/amit/ContactManager2/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values-v21/values-v21.xml",
@@ -1741,12 +1762,12 @@
             },
             {
                 "to": {
-                    "startLine": 253,
+                    "startLine": 260,
                     "startColumn": 4,
-                    "startOffset": 18450,
-                    "endLine": 255,
+                    "startOffset": 18870,
+                    "endLine": 262,
                     "endColumn": 12,
-                    "endOffset": 18639
+                    "endOffset": 19059
                 },
                 "from": {
                     "file": "/home/amit/ContactManager2/app/build/intermediates/exploded-aar/com.android.support/design/24.2.1/res/values-v21/values-v21.xml",
@@ -1762,12 +1783,12 @@
             },
             {
                 "to": {
-                    "startLine": 256,
+                    "startLine": 263,
                     "startColumn": 4,
-                    "startOffset": 18644,
-                    "endLine": 257,
+                    "startOffset": 19064,
+                    "endLine": 264,
                     "endColumn": 10,
-                    "endOffset": 18729
+                    "endOffset": 19149
                 },
                 "from": {
                     "file": "/home/amit/ContactManager2/app/build/intermediates/exploded-aar/com.squareup.leakcanary/leakcanary-android/1.4/res/values-v21/values-v21.xml",
