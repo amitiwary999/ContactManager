@@ -18,6 +18,7 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -121,6 +122,15 @@ public class AddContact extends AppCompatActivity implements AdapterView.OnItemS
                 startActivityForResult(intent,1);
             }
         });
+
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        getWindow().setSoftInputMode(
+                               WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN
+                               );
 
     }
 
