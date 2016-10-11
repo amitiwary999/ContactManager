@@ -99,10 +99,11 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     }*/
 
     //       Read single contact row. It accepts id as parameter and will return matched row from the database
-    public Contact getContact(int id){
+    public Contact getContact(String grp){
         SQLiteDatabase db = getReadableDatabase();
 
-        Cursor cursor = db.query(TABLE_CONTACTS,new String[]{KEY_ID, KEY_NAME, KEY_PHONE, KEY_EMAIL, KEY_ADDRESS, KEY_GROP, KEY_IMAGEURI}, KEY_ID + "=?", new String[]{ String.valueOf(id) }, null, null,null, null);
+        Cursor cursor=db.rawQuery("SELECT * FROM " + TABLE_CONTACTS + " WHERE " + KEY_NAME + " = ? ", new String []{grp});
+       // Cursor cursor = db.query(TABLE_CONTACTS,new String[]{KEY_ID, KEY_NAME, KEY_PHONE, KEY_EMAIL, KEY_ADDRESS, KEY_GROP, KEY_IMAGEURI}, KEY_ID + "=?", new String[]{ String.valueOf(id) }, null, null,null, null);
 
         if (cursor != null)
             cursor.moveToFirst();

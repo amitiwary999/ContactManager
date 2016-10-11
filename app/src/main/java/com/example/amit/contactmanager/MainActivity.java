@@ -97,12 +97,13 @@ public class MainActivity extends AppCompatActivity {
         contactListView = (ListView) findViewById(R.id.listView);
         //contactImageImgView = (ImageView) findViewById(R.id.imgViewContactImage);
         rootLayout=(CoordinatorLayout)findViewById(R.id.coordinatorLayout);
-        addDataToList(Contacts,null);
+//        addDataToList(Contacts,null);
         /* SystemBarTintManager tintManager = new SystemBarTintManager(this);
         // enable status bar tint
         tintManager.setStatusBarTintEnabled(true);
         // enable navigation bar tint
         tintManager.setNavigationBarTintEnabled(true);*/
+        searchView=(MaterialSearchView)findViewById(R.id.search_view);
         dbHandler = new DatabaseHandler(getApplicationContext());
         fab_open = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fab_open);
         fab_close = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.fab_close);
@@ -422,7 +423,7 @@ public class MainActivity extends AppCompatActivity {
     private class ContactListAdapter extends ArrayAdapter<Contact> {
         Context mContext;
         LayoutInflater inflater;
-      private   List<Contact> data=null;
+      private   List<Contact> data=Contacts;
         private ArrayList<Contact> arrayList;
         public ContactListAdapter(){
 
@@ -499,14 +500,14 @@ public class MainActivity extends AppCompatActivity {
         WaspHash itemsHash = db.openOrCreateHash("items");
 
         if(query == null) {
-            List<Contact> ld = itemsHash.getAllValues();
+            List<Contact> ld = dbHandler.getAllContacts();
             if (ld == null) {
                 Log.d("ld", "is null");
             }
             data.addAll(ld);
         }
         else {
-            List<Contact> ld = itemsHash.getAllValues();
+            List<Contact> ld = dbHandler.getAllContacts();
             for(Contact item:ld ){
                 if(item.getName().toLowerCase().contains(query.toLowerCase())){
                     data.add(item);
