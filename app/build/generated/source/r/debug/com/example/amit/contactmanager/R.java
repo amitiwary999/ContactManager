@@ -2727,17 +2727,18 @@ containing a value of this type.
         public static final int ic_action_navigation_close_inverted=0x7f02005e;
         public static final int ic_action_voice_search=0x7f02005f;
         public static final int ic_action_voice_search_inverted=0x7f020060;
-        public static final int ic_suggestion=0x7f020061;
-        public static final int job=0x7f020062;
-        public static final int leak_canary_icon=0x7f020063;
-        public static final int leak_canary_notification=0x7f020064;
-        public static final int leak_canary_toast_background=0x7f020065;
-        public static final int mainfab=0x7f020066;
-        public static final int navigation_empty_icon=0x7f020067;
-        public static final int notification_template_icon_bg=0x7f02006b;
-        public static final int person=0x7f020068;
-        public static final int search=0x7f020069;
-        public static final int user=0x7f02006a;
+        public static final int ic_search=0x7f020061;
+        public static final int ic_suggestion=0x7f020062;
+        public static final int job=0x7f020063;
+        public static final int leak_canary_icon=0x7f020064;
+        public static final int leak_canary_notification=0x7f020065;
+        public static final int leak_canary_toast_background=0x7f020066;
+        public static final int mainfab=0x7f020067;
+        public static final int navigation_empty_icon=0x7f020068;
+        public static final int notification_template_icon_bg=0x7f02006c;
+        public static final int person=0x7f020069;
+        public static final int search=0x7f02006a;
+        public static final int user=0x7f02006b;
     }
     public static final class id {
         public static final int action0=0x7f0d0097;
@@ -2756,7 +2757,6 @@ containing a value of this type.
         public static final int action_mode_bar=0x7f0d005b;
         public static final int action_mode_bar_stub=0x7f0d005a;
         public static final int action_mode_close_button=0x7f0d003f;
-        public static final int action_settings=0x7f0d00ae;
         public static final int action_up_btn=0x7f0d00a8;
         public static final int action_voice_btn=0x7f0d00a9;
         public static final int activity_chooser_view_content=0x7f0d0040;
@@ -2852,6 +2852,7 @@ containing a value of this type.
         public static final int scrollIndicatorUp=0x7f0d004e;
         public static final int scrollView=0x7f0d004f;
         public static final int scrollable=0x7f0d003c;
+        public static final int search=0x7f0d00ae;
         public static final int searchTextView=0x7f0d00a7;
         public static final int search_badge=0x7f0d0062;
         public static final int search_bar=0x7f0d0061;

@@ -22,7 +22,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".AddContact"></activity>
-        <activity android:name=".Groupby"></activity>
+        <activity android:name=".Groupby"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

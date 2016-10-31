@@ -16,6 +16,10 @@
         "source": "/home/amit/ContactManager2/app/build/intermediates/exploded-aar/com.miguelcatalan/materialsearchview/1.4.0/res/drawable-xxhdpi/ic_action_action_search.png"
     },
     {
+        "merged": "/home/amit/ContactManager2/app/build/intermediates/res/merged/debug/drawable-xxhdpi/ic_search.png",
+        "source": "/home/amit/ContactManager2/app/build/generated/res/pngs/debug/drawable-xxhdpi/ic_search.png"
+    },
+    {
         "merged": "/home/amit/ContactManager2/app/build/intermediates/res/merged/debug/drawable-xxhdpi/ic_suggestion.png",
         "source": "/home/amit/ContactManager2/app/build/intermediates/exploded-aar/com.miguelcatalan/materialsearchview/1.4.0/res/drawable-xxhdpi/ic_suggestion.png"
     },

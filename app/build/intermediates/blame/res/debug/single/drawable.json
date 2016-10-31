@@ -140,12 +140,12 @@
         "source": "/home/amit/ContactManager2/app/src/main/res/drawable/home.png"
     },
     {
-        "merged": "/home/amit/ContactManager2/app/build/intermediates/res/merged/debug/drawable/abc_list_selector_background_transition_holo_dark.xml",
-        "source": "/home/amit/ContactManager2/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/drawable/abc_list_selector_background_transition_holo_dark.xml"
-    },
-    {
         "merged": "/home/amit/ContactManager2/app/build/intermediates/res/merged/debug/drawable/add.png",
         "source": "/home/amit/ContactManager2/app/src/main/res/drawable/add.png"
+    },
+    {
+        "merged": "/home/amit/ContactManager2/app/build/intermediates/res/merged/debug/drawable/abc_list_selector_background_transition_holo_dark.xml",
+        "source": "/home/amit/ContactManager2/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/drawable/abc_list_selector_background_transition_holo_dark.xml"
     },
     {
         "merged": "/home/amit/ContactManager2/app/build/intermediates/res/merged/debug/drawable/abc_ic_go_search_api_material.xml",

@@ -379,8 +379,9 @@ public class MainActivity extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.menu, menu);
 
        // MenuItem searchItem = menu.findItem(R.id.add);
-
-        return super.onCreateOptionsMenu(menu);
+        MenuItem item = menu.findItem(R.id.search);
+        searchView.setMenuItem(item);
+        return true;
     }
 
      @Override

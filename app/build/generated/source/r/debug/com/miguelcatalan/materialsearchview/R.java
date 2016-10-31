@@ -565,8 +565,8 @@ public final class R {
 		public static final int ic_action_navigation_close_inverted = 0x7f02005e;
 		public static final int ic_action_voice_search = 0x7f02005f;
 		public static final int ic_action_voice_search_inverted = 0x7f020060;
-		public static final int ic_suggestion = 0x7f020061;
-		public static final int notification_template_icon_bg = 0x7f02006b;
+		public static final int ic_suggestion = 0x7f020062;
+		public static final int notification_template_icon_bg = 0x7f02006c;
 	}
 	public static final class id {
 		public static final int action0 = 0x7f0d0097;

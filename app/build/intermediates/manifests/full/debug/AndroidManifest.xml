@@ -36,7 +36,9 @@
             </intent-filter>
         </activity>
         <activity android:name="com.example.amit.contactmanager.AddContact" />
-        <activity android:name="com.example.amit.contactmanager.Groupby" />
+        <activity
+            android:name="com.example.amit.contactmanager.Groupby"
+            android:theme="@style/AppTheme.NoActionBar" />
 
         <service
             android:name="com.squareup.leakcanary.internal.HeapAnalyzerService"

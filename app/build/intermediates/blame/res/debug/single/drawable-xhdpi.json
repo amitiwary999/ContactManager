@@ -4,6 +4,10 @@
         "source": "/home/amit/ContactManager2/app/build/intermediates/exploded-aar/com.miguelcatalan/materialsearchview/1.4.0/res/drawable-xhdpi/ic_action_navigation_arrow_back_inverted.png"
     },
     {
+        "merged": "/home/amit/ContactManager2/app/build/intermediates/res/merged/debug/drawable-xhdpi/ic_search.png",
+        "source": "/home/amit/ContactManager2/app/build/generated/res/pngs/debug/drawable-xhdpi/ic_search.png"
+    },
+    {
         "merged": "/home/amit/ContactManager2/app/build/intermediates/res/merged/debug/drawable-xhdpi/ic_action_action_search.png",
         "source": "/home/amit/ContactManager2/app/build/intermediates/exploded-aar/com.miguelcatalan/materialsearchview/1.4.0/res/drawable-xhdpi/ic_action_action_search.png"
     },
